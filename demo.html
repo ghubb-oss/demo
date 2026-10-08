@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Abishek | Cybersecurity & AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #070b14;
+            color: #e8edf7;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 8%;
+            background: rgba(7, 11, 20, 0.9);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #182235;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00f5a0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #c8d1df;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00f5a0;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #00f5a0;
+            opacity: 0.08;
+            filter: blur(120px);
+            border-radius: 50%;
+            top: 10%;
+            right: 5%;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #00f5a0;
+            border-radius: 30px;
+            color: #00f5a0;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: #00f5a0;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #aeb8c8;
+            max-width: 750px;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #00f5a0;
+            color: #06100c;
+        }
+
+        .primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 245, 160, 0.2);
+        }
+
+        .secondary {
+            border: 1px solid #26344a;
+            color: white;
+        }
+
+        .secondary:hover {
+            border-color: #00f5a0;
+            color: #00f5a0;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: #8995a8;
+            margin-bottom: 45px;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .about-card {
+            background: #0d1422;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #1b283b;
+        }
+
+        .about-card h3 {
+            color: #00f5a0;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            color: #aeb8c8;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 10px 17px;
+            border-radius: 8px;
+            background: #101a2b;
+            border: 1px solid #20304a;
+            color: #cbd5e5;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            border-color: #00f5a0;
+            color: #00f5a0;
+            transform: translateY(-3px);
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: #0d1422;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #1b283b;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: #00f5a0;
+        }
+
+        .project-number {
+            color: #00f5a0;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .project h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: #9ca9bc;
+            margin-bottom: 15px;
+        }
+
+        .project ul {
+            padding-left: 20px;
+            color: #b9c4d4;
+        }
+
+        /* INTERESTS */
+
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .interest {
+            background: #0d1422;
+            border: 1px solid #1b283b;
+            padding: 25px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .interest-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .interest h3 {
+            font-size: 18px;
+        }
+
+        /* GOALS */
+
+        .goal-box {
+            background: linear-gradient(
+                135deg,
+                #0d1827,
+                #0b111d
+            );
+            border: 1px solid #1e3445;
+            border-radius: 18px;
+            padding: 45px;
+        }
+
+        .goal-box h3 {
+            color: #00f5a0;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .career-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .career {
+            padding: 14px;
+            background: #111d2d;
+            border-radius: 8px;
+            color: #c5cfdd;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #182235;
+            color: #7e8a9d;
+        }
+
+        footer span {
+            color: #00f5a0;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .about-grid,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .interest-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero {
+                padding: 120px 5% 70px;
+            }
+
+            .interest-grid,
+            .career-list {
+                grid-template-columns: 1fr;
+            }
+
+            .goal-box {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">ABISHEK.</div>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#career">Career</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                CYBERSECURITY × AI × SOFTWARE
+            </div>
+
+            <h1>
+                Hi, I'm <span class="highlight">Abishek.</span>
+            </h1>
+
+            <p>
+                BE Computer Science Engineering student specializing in
+                Cyber Security. I enjoy building practical projects at the
+                intersection of cybersecurity, artificial intelligence,
+                software engineering and automation.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">
+                    View My Projects
+                </a>
+
+                <a href="#about" class="btn secondary">
+                    About Me
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">About Me</h2>
+
+        <p class="section-subtitle">
+            A hands-on learner who prefers building over just studying.
+        </p>
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <h3>Who I Am</h3>
+
+                <p>
+                    I'm a second-year BE CSE Cyber Security student with
+                    a strong interest in technology, cybersecurity and
+                    artificial intelligence.
+                </p>
+
+                <br>
+
+                <p>
+                    I enjoy experimenting with new tools, developing
+                    applications, participating in hackathons and turning
+                    ideas into working projects.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <h3>My Approach</h3>
+
+                <p>
+                    My preferred way of learning is simple:
+                    understand the concept, build something with it,
+                    break it, fix it and improve it.
+                </p>
+
+                <br>
+
+                <p>
+                    I focus on practical skills that can eventually be
+                    used in real-world security and software engineering
+                    environments.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERESTS -->
+
+    <section>
+
+        <h2 class="section-title">What I'm Into</h2>
+
+        <p class="section-subtitle">
+            The areas that currently drive my learning.
+        </p>
+
+        <div class="interest-grid">
+
+            <div class="interest">
+                <div class="interest-icon">🔐</div>
+                <h3>Cybersecurity</h3>
+            </div>
+
+            <div class="interest">
+                <div class="interest-icon">🤖</div>
+                <h3>Artificial Intelligence</h3>
+            </div>
+
+            <div class="interest">
+                <div class="interest-icon">💻</div>
+                <h3>Software Engineering</h3>
+            </div>
+
+            <div class="interest">
+                <div class="interest-icon">⚙️</div>
+                <h3>Automation</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <h2 class="section-title">Skills & Technologies</h2>
+
+        <p class="section-subtitle">
+            Technologies and tools I've explored through projects and learning.
+        </p>
+
+        <div class="skills">
+
+            <span class="skill">Python</span>
+            <span class="skill">Java</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">Node.js</span>
+            <span class="skill">Express.js</span>
+            <span class="skill">FastAPI</span>
+            <span class="skill">Docker</span>
+            <span class="skill">Streamlit</span>
+            <span class="skill">GitHub</span>
+            <span class="skill">Ollama</span>
+            <span class="skill">Hugging Face</span>
+            <span class="skill">OpenRouter</span>
+            <span class="skill">N8N</span>
+            <span class="skill">Firebase</span>
+            <span class="skill">Arduino</span>
+            <span class="skill">ESP32</span>
+            <span class="skill">NodeMCU</span>
+            <span class="skill">Blynk</span>
+            <span class="skill">Burp Suite</span>
+            <span class="skill">Nmap</span>
+            <span class="skill">OWASP</span>
+            <span class="skill">Cloudflare Tunnel</span>
+            <span class="skill">Next.js</span>
+            <span class="skill">Vercel</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <h2 class="section-title">Featured Projects</h2>
+
+        <p class="section-subtitle">
+            Some of the projects and ideas I've worked on.
+        </p>
+
+        <div class="projects">
+
+            <!-- PROJECT 1 -->
+
+            <div class="project">
+
+                <div class="project-number">01 / AI SECURITY</div>
+
+                <h3>SecureMate</h3>
+
+                <p>
+                    An AI-powered cybersecurity and privacy analysis
+                    platform designed to identify security and privacy
+                    risks.
+                </p>
+
+                <ul>
+                    <li>AI phishing detection</li>
+                    <li>Privacy risk analysis</li>
+                    <li>Email security scanning</li>
+                    <li>Dark-web breach checking</li>
+                    <li>Attack visualization</li>
+                    <li>AI-generated PDF reports</li>
+                </ul>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="project">
+
+                <div class="project-number">02 / THREAT INTELLIGENCE</div>
+
+                <h3>AEGIX-AI</h3>
+
+                <p>
+                    An AI-driven security analysis platform focused on
+                    understanding attacks and presenting actionable
+                    incident intelligence.
+                </p>
+
+                <ul>
+                    <li>Attack Timeline</li>
+                    <li>Attacker World Map</li>
+                    <li>AI Incident Reports</li>
+                    <li>MITRE ATT&CK mapping</li>
+                    <li>Threat Score breakdown</li>
+                    <li>Evidence-based AI explanations</li>
+                </ul>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="project">
+
+                <div class="project-number">03 / WEB TOOLS</div>
+
+                <h3>QuickTools</h3>
+
+                <p>
+                    An idea for a collection of simple, free online
+                    productivity tools.
+                </p>
+
+                <ul>
+                    <li>PDF tools</li>
+                    <li>Image compression</li>
+                    <li>Word counter</li>
+                    <li>Utility tools</li>
+                    <li>Web-based interface</li>
+                </ul>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+
+            <div class="project">
+
+                <div class="project-number">04 / HACKATHONS</div>
+
+                <h3>Hackathon Projects</h3>
+
+                <p>
+                    Hands-on development through hackathons, including
+                    cybersecurity, AI, IoT and backend-focused projects.
+                </p>
+
+                <ul>
+                    <li>Smart India Hackathon</li>
+                    <li>University hackathons</li>
+                    <li>CTF challenges</li>
+                    <li>IoT prototypes</li>
+                    <li>Backend development</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CYBERSECURITY -->
+
+    <section>
+
+        <h2 class="section-title">Cybersecurity Journey</h2>
+
+        <p class="section-subtitle">
+            Areas I've been learning and practicing.
+        </p>
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <h3>Security Fundamentals</h3>
+
+                <p>
+                    HTTP, cookies, status codes, networking,
+                    authentication, authorization and common web
+                    security concepts.
+                </p>
+
+            </div>
+
+            <div class="about-card">
+
+                <h3>Web Security</h3>
+
+                <p>
+                    OWASP concepts, Broken Access Control, IDOR,
+                    Burp Suite, vulnerability testing and
+                    security labs.
+                </p>
+
+            </div>
+
+            <div class="about-card">
+
+                <h3>Security Operations</h3>
+
+                <p>
+                    Threat detection, SOC operations, incident
+                    analysis, security monitoring and defensive
+                    cybersecurity.
+                </p>
+
+            </div>
+
+            <div class="about-card">
+
+                <h3>AI Security</h3>
+
+                <p>
+                    Exploring how AI can be used for threat detection,
+                    security analysis, phishing detection and
+                    automated incident response.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CAREER -->
+
+    <section id="career">
+
+        <h2 class="section-title">Career Direction</h2>
+
+        <p class="section-subtitle">
+            Building toward a career in defensive and engineering-focused cybersecurity.
+        </p>
+
+        <div class="goal-box">
+
+            <h3>Cybersecurity + AI + Engineering</h3>
+
+            <p>
+                My goal is to combine cybersecurity knowledge with
+                software engineering, artificial intelligence and
+                automation to solve real-world security problems.
+            </p>
+
+            <div class="career-list">
+
+                <div class="career">
+                    🛡️ Security Analyst
+                </div>
+
+                <div class="career">
+                    📊 SOC Analyst
+                </div>
+
+                <div class="career">
+                    ⚙️ Security Automation Engineer
+                </div>
+
+                <div class="career">
+                    🔎 Detection Engineer
+                </div>
+
+                <div class="career">
+                    ☁️ Cloud Security Engineer
+                </div>
+
+                <div class="career">
+                    🤖 AI Security Engineer
+                </div>
+
+                <div class="career">
+                    💻 Security Engineer
+                </div>
+
+                <div class="career">
+                    🚨 Threat Detection
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEARNING STYLE -->
+
+    <section>
+
+        <h2 class="section-title">How I Learn</h2>
+
+        <p class="section-subtitle">
+            My preferred learning cycle.
+        </p>
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <h3>01 — Learn</h3>
+
+                <p>
+                    Understand the fundamentals and learn how the
+                    technology works.
+                </p>
+
+            </div>
+
+            <div class="about-card">
+
+                <h3>02 — Build</h3>
+
+                <p>
+                    Turn the concept into a real project instead of
+                    stopping at theory.
+                </p>
+
+            </div>
+
+            <div class="about-card">
+
+                <h3>03 — Break</h3>
+
+                <p>
+                    Experiment, test limitations and find weaknesses
+                    in what I've built.
+                </p>
+
+            </div>
+
+            <div class="about-card">
+
+                <h3>04 — Improve</h3>
+
+                <p>
+                    Fix problems, optimize the project and learn from
+                    the mistakes.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Built with curiosity, code &amp; caffeine.
+        </p>
+
+        <p>
+            © 2026 <span>Abishek</span> · Cybersecurity & AI
+        </p>
+
+    </footer>
+
+</body>
+</html>
